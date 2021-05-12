@@ -12,12 +12,12 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    // name: 'Home',
     component: Home
   },
   {
     path: '/about',
-    name: 'About',
+    // name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -34,28 +34,23 @@ const routes = [
     component: Login
   },
   {
-    path: 'add',
-    name: 'Admin-Add',
-    component: Add
-  },
-  {
     path: '/admin',
     name: 'Admin',
-    component: Admin,
-    // childredn: [
-    //   {
-    //     path: 'addhome',
-    //     name: 'Admin-Home',
-    //     component: AdminHome
-    //   },
-    //   {
-    //     path: 'add',
-    //     name: 'Admin-Add',
-    //     component: Add
-    //   },
-    // ]
+    component: Admin, 
+    children:[
+      { 
+        path:'', 
+        // name: Admin-Home,
+        component: AdminHome,
+      },
+      { 
+        path:'add', 
+        component: Add,
+      },
+      
+    ]
+    
   },
-
   {
     path: '*',
     redirect: { name: 'Home' }

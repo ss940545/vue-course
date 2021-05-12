@@ -13,6 +13,9 @@
 import Header from '@/components/Header'
 
 export default {
+  mounted() {
+    this.$store.dispatch('fetchArticles')
+  },
   components: {
     Header,
   },

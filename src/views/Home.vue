@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <article v-for="art in articles" :key="art.title">
+    <article v-for="art in filterBySearchKey" :key="art.title">
       <h3 @click="routerToArticle(art.id)">{{ art.title}}</h3>
       <i>{{ art.date}}</i>
       <span>{{ art.content | subContent}}</span>
@@ -13,6 +13,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import axios from "axios";
+import {mapState , mapGetters} from 'vuex'
 
 
 export default {
@@ -22,16 +23,16 @@ export default {
   },
   data(){
     return  {
-      articles: null,
+      
     }
   },
   mounted() {
-    const api = 'https://us-central1-expressapi-8c039.cloudfunctions.net/app/article'
-    axios.get(api)
-    .then(res=> {
-       this.articles = res.data.data;
-       console.log('articles', this.articles)
-    })
+    // const api = 'https://us-central1-expressapi-8c039.cloudfunctions.net/app/article'
+    // axios.get(api)
+    // .then(res=> {
+    //    this.articles = res.data.data;
+    //    console.log('articles', this.articles)
+    // })
   },
   methods: {
     routerToArticle: function(id){
@@ -41,11 +42,18 @@ export default {
       })
     }
   },
+  computed:{
+     ...mapState(['articles']),
+     ...mapGetters(['filterBySearchKey'])
+  },
   filters: {
     subContent: (conetent) => {
       return conetent.substring(0,150)
     },
   },
+  watch: {
+    
+  }
 }
 </script>
 

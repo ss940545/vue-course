@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h1>test</h1>
-        <!-- <router-link to="/admin/addhome"> Admin-home</router-link> -->
-        <!-- <router-link to="/about"> Admin-add</router-link> -->
-        <router-view></router-view>
+      
+        <router-link to="/admin"> Admin-home</router-link> /
+        <router-link to="/admin/add"> add</router-link>
+        <router-view/>
     </div>
 
 </template>

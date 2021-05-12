@@ -14,17 +14,20 @@
              <b-nav-item  to="/login">Login
             </b-nav-item>
 
-            <b-nav-item  to="/add">Admin-Add
-            </b-nav-item>
+            <!-- <b-nav-item  to="/add">add
+            </b-nav-item> -->
             
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-            <!-- <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-            </b-nav-form> -->
+            <b-nav-form>
+                <b-form-input size="sm" class="mr-sm-2" 
+                v-model="searchKey" placeholder="Search"></b-form-input>
+                <b-button size="sm" class="my-2 my-sm-0" 
+                @click.prevent="submitSearchKey"
+                type="submit">Search</b-button>
+            </b-nav-form>
 
             <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
@@ -48,11 +51,36 @@
 </template>
 
 <script>
-export default {
+import {mapState, mapActions} from 'vuex'
 
+export default {
+    data() {
+        return  {
+            searchKey: ''
+        }
+    },
+    methods: {
+        ...mapActions(['changeSearchKey']),
+        submitSearchKey: function() {
+            this.changeSearchKey(this.searchKey)
+        }
+    },
+    watch: {
+        searchKey: {
+            handler(val) {
+                if(val === '') {
+                    console.log('searchkey', val)
+                    this.submitSearchKey()
+                }
+            },
+            deep: true
+        }
+    }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.form-inline {
+    display: flex;
+}
 </style>
