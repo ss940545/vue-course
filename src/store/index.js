@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios";
+import {app} from '../main' //匯入我們的Vue Instance
 
 Vue.use(Vuex)
 
@@ -9,6 +10,7 @@ export default new Vuex.Store({
     articles:[],
     searchKey:'',
     account: 'glove',
+    lang:'zh',
   },
   mutations: {
     fetchArticles: (state, payload)=> {
@@ -17,6 +19,12 @@ export default new Vuex.Store({
     changeSearchKey: ( state, payload)=> {
       state.searchKey = payload
     },
+    addArticles:(state, payload)=> {
+      state.articles = [payload,...state.articles]
+    },
+    // [types.SET_LANG] (state, payload) {
+    //   app.$i18n.locale = payload // 改變語言
+    // }
   },
   actions: {
     fetchArticles: async( {commit })=> {
@@ -28,6 +36,13 @@ export default new Vuex.Store({
     changeSearchKey:({commit} , payload) => {
       commit('changeSearchKey', payload)
     },
+    addArticles: ({commit}, payload)=> {
+      payload.id = 'newId1'
+      commit('addArticles', payload)
+    },
+    // setLang({commit}, payload) {
+    //   commit(types.SET_LANG, payload)
+    // }
   },
   getters: {
     filterBySearchKey: (state, getters)=> {

@@ -46,7 +46,7 @@ export default {
     },
     methods: {
         routerToAdmin: function() {
-            this.$router.push({ name: "Admin"})
+            this.$router.push('/admin')
         }
     }
 }

@@ -4,8 +4,9 @@ import Home from '../views/Home.vue'
 import Article from '@/views/Article.vue'
 import Login from '@/views/Login.vue'
 import Admin from '@/views/Admin.vue'
-import Add from '@/views/Add.vue'
+import Add from '@/views/Admin/Add.vue'
 import AdminHome from '@/views/Admin/AdminHome.vue'
+
 
 Vue.use(VueRouter)
 
@@ -45,11 +46,15 @@ const routes = [
       },
       { 
         path:'add', 
+        // name: Admin-Add,
         component: Add,
       },
-      
+      { 
+        path:'edit/:id', 
+        // name: Admin-Edit,
+        component: Add,
+      },
     ]
-    
   },
   {
     path: '*',
