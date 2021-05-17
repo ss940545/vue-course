@@ -58,16 +58,24 @@ export default {
         return  {
             searchKey: '',
             language: "zh",
+            selectlang: [
+                { text: "繁體中文", value: "zh" },
+                { text: "English", value: "en" },
+            ],
         }
     },
     mounted(){
-        
+        this.lang();
     },
     methods: {
         ...mapActions(['changeSearchKey']),
         submitSearchKey: function() {
             this.changeSearchKey(this.searchKey)
         },
+        lang: function(){
+            console.log('aaaaaaaaaa');
+            localStorage.setItem("language", this.language);
+        }
     },
     watch: {
         searchKey: {
