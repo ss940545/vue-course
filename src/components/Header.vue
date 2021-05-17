@@ -7,9 +7,9 @@
 
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-            <b-nav-item to="/">Home
+            <b-nav-item to="/">{{ $t("home") }}
             </b-nav-item>
-            <b-nav-item  to="/about">About
+            <b-nav-item  to="/about">{{ $t("about") }}
             </b-nav-item>
              <b-nav-item  to="/login">Login
             </b-nav-item>
@@ -56,25 +56,29 @@ import {mapState, mapActions} from 'vuex'
 export default {
     data() {
         return  {
-            searchKey: ''
+            searchKey: '',
+            language: "zh",
         }
+    },
+    mounted(){
+        
     },
     methods: {
         ...mapActions(['changeSearchKey']),
         submitSearchKey: function() {
             this.changeSearchKey(this.searchKey)
-        }
+        },
     },
     watch: {
         searchKey: {
             handler(val) {
                 if(val === '') {
-                    console.log('searchkey', val)
+                    
                     this.submitSearchKey()
                 }
             },
             deep: true
-        }
+        },
     }
 }
 </script>

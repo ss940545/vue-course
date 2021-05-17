@@ -13,12 +13,19 @@
 import Header from '@/components/Header'
 
 export default {
+  // data(){
+  //   return {
+  //     language:"zh"
+  //   }
+  // },
+  
   mounted() {
     this.$store.dispatch('fetchArticles')
   },
   components: {
     Header,
   },
+
 }
 </script>
 
