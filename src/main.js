@@ -6,14 +6,18 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import i18n from '@/i18n/index.js'
-
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+// import swal from 'vue-sweetalert2';
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(i18n)
+Vue.use(ElementUI)
 
+// Vue.use(swal)
 // const locales = {
 //   en: en,
 //   zh: zh,
